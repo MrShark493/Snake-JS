@@ -1,0 +1,6 @@
+#canvasContainer {
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    border: 1px solid black;
+}
