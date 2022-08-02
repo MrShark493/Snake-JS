@@ -87,7 +87,7 @@ const drawGraphics = () => { //<- функция рисующая картинк
     context.fillText(score, box * 2.5, box * 1.7); // <- !!! пофиксить. Сильно влияет на производительность
 
     if (snake[0].x == objfood.x && snake[0].y == objfood.y) {
-        snake.push({x: -1, y: -1});
+        snake.push({x: -2, y: -2});
         score += 1;
         objfood = {
             x: Math.floor((Math.random() *17 + 1)) * box,
@@ -95,11 +95,17 @@ const drawGraphics = () => { //<- функция рисующая картинк
         };
     }
 
+    for (let i = 1; i < snake.length; i += 1) {
+        if ((snake[0].x === snake[i].x) && (snake[0].y === snake[i].y)) {
+            gameRestart();
+        }
+    }
+
     //если длина змейки > 1, то координаты звена змейки переносятся на следующее звено
-    // for (let i = 1; i < snake.length; i++) {
-    //     snake[i - 1].x = snake[i].x;
-    //     snake[i - 1].y = snake[i].y;
-    // }
+    for (let i = snake.length - 1; i > 0; i -= 1) {
+        snake[i].x = snake[i - 1].x;
+        snake[i].y = snake[i - 1].y;
+    }
 
     //в зависимости от переменной, меняется направление движения змейки
     if (dir == 'left') snake[0].x -= box;
