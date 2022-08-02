@@ -96,10 +96,10 @@ const drawGraphics = () => { //<- функция рисующая картинк
     }
 
     //если длина змейки > 1, то координаты звена змейки переносятся на следующее звено
-    // for (let i = 1; i < snake.length; i++) {
-    //     snake[i - 1].x = snake[i].x;
-    //     snake[i - 1].y = snake[i].y;
-    // }
+    for (let i = snake.length - 1; i > 0; i -= 1) {
+        snake[i].x = snake[i - 1].x;
+        snake[i].y = snake[i - 1].y;
+    }
 
     //в зависимости от переменной, меняется направление движения змейки
     if (dir == 'left') snake[0].x -= box;
