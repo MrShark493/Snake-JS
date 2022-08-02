@@ -1,6 +1,31 @@
+header {
+    height: 10%;
+    background-color: green;
+    border: 1px solid black;
+}
+
+#globalContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#leftPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+}
+
 #canvasContainer {
     width: 600px;
     height: 600px;
     margin: auto;
+    border: 1px solid black;
+}
+
+footer {
+    height: 10%;
+    background-color: green;
     border: 1px solid black;
 }
