@@ -51,6 +51,10 @@ const gameRestart = () => {
     scoreReset();
     dir = '';
 }
+
+const gamePause = () => {
+    
+}
 //обновление счета
 const scoreRefresh = (score) => {
     document.getElementById('scoreHeader').innerHTML = score;
@@ -86,18 +90,16 @@ const direction = (e) => { // <- Задаем функцию
 
 const drawGraphics = () => { //<- функция рисующая картинку
     context.clearRect(0, 0, canvasWidth, canvasHeight);
-    context.drawImage(food, objfood.x, objfood.y);
 
     //отрисовка змеи
     for (let i = 0; i < snake.length; i++) {
-        context.fillStyle = i == 0 ? 'green' : 'red';
+        context.fillStyle = i == 0 ? 'rgb(10, 100, 10)' : 'rgb(10, 130, 10)';
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
 
+    context.drawImage(food, objfood.x, objfood.y);
+
     //отрисовка игрового счетчика в верхнем левом углу
-    // context.fillStyle = 'white';
-    // context.font = '50px Arial';
-    // context.fillText(score, box * 2.5, box * 1.7);
 
     if (snake[0].x == objfood.x && snake[0].y == objfood.y) {
         snake.push({x: -2, y: -2});

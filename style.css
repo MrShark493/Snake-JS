@@ -1,31 +1,50 @@
 header {
-    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 50px;
     background-color: green;
     border: 1px solid black;
 }
 
+#gameName {
+    margin: 0 auto;
+}
+
 #globalContainer {
+    height: 20%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
 
-#leftPanel {
+#left-Panel {
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: center;
 }
 
+#left-Panel-Score {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.left-Panel-button {
+    width: 250px;
+    height: 50px;
+    margin: 5px auto;
+}
+
 #canvasContainer {
     width: 600px;
     height: 600px;
-    margin: auto;
     border: 1px solid black;
 }
 
 footer {
-    height: 10%;
+    height: 50px;
     background-color: green;
     border: 1px solid black;
 }
