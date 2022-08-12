@@ -22,7 +22,7 @@ const playgroundSize = {width: 17, height: 15};
 
 let score = 0;
 
-let dir = 'up';
+let dir = '';
 
 const snake = [];
 
@@ -35,7 +35,7 @@ let objfood = {
     x: Math.floor(Math.random()*17 + 1) * box,
     y: Math.floor(Math.random()*15 + 3) * box
 };
-//секция собственных событий
+//секция событий
 //////////////////////////////////////////
 
 const gameRestart = () => {
@@ -48,8 +48,26 @@ const gameRestart = () => {
         x: Math.floor(Math.random()*17 + 1) * box,
         y: Math.floor(Math.random()*15 + 3) * box
     };
-    score = 0;
+    scoreReset();
     dir = '';
+}
+
+const gamePause = () => {
+    
+}
+//обновление счета
+const scoreRefresh = (score) => {
+    document.getElementById('scoreHeader').innerHTML = score;
+};
+
+const scoreReset = () => {
+    score = 0;
+    scoreRefresh(score);
+}
+
+const scoreUp = () => {
+    score += 1;
+    scoreRefresh(score);
 }
 
 //секция глобальных функций
@@ -71,27 +89,24 @@ const direction = (e) => { // <- Задаем функцию
 }
 
 const drawGraphics = () => { //<- функция рисующая картинку
-    //context.drawImage(playground, 0, 0);
     context.clearRect(0, 0, canvasWidth, canvasHeight);
-    context.drawImage(food, objfood.x, objfood.y);
 
     //отрисовка змеи
     for (let i = 0; i < snake.length; i++) {
-        context.fillStyle = i == 0 ? 'green' : 'red';
+        context.fillStyle = i == 0 ? 'rgb(10, 100, 10)' : 'rgb(10, 130, 10)';
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
 
+    context.drawImage(food, objfood.x, objfood.y);
+
     //отрисовка игрового счетчика в верхнем левом углу
-    context.fillStyle = 'white';
-    context.font = '50px Arial';
-    context.fillText(score, box * 2.5, box * 1.7); // <- !!! пофиксить. Сильно влияет на производительность
 
     if (snake[0].x == objfood.x && snake[0].y == objfood.y) {
         snake.push({x: -2, y: -2});
-        score += 1;
+        scoreUp();
         objfood = {
-            x: Math.floor((Math.random() *17 + 1)) * box,
-            y: Math.floor((Math.random() *15 + 3)) * box
+            x: Math.floor((Math.random() * 17 + 1)) * box,
+            y: Math.floor((Math.random() * 15 + 3)) * box
         };
     }
 

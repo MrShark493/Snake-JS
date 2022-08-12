@@ -8,10 +8,27 @@
  </head>
 
  <body>
-    <div id="canvasContainer">
-        <canvas id="canvas" width="600" height="600"></canvas>
-        <script src="script.js"></script>
+    <header>
+        <div class="gameName">
+            <h2>Snake-JS</h2>
+        </div>
+    </header>
+    <div id="globalContainer">
+        <div id='left-Panel'>
+            <div id="left-Panel-Score">
+                <h3> Счет: </h3>
+                <h1 id="scoreHeader">0</h1>
+            </div>
+            <button class="left-Panel-button" onclick="gameRestart()">Restart</button>
+        </div>
+        <div id="canvasContainer">
+            <canvas id="canvas" width="600" height="600"></canvas>
+            <script src="script.js"></script>
+        </div>
     </div>
+    <footer>
+        <h6>Made my MrShark493</h6>
+    </footer>
  </body>
 
 </html>
